@@ -1,0 +1,321 @@
+
+/* =========================================
+   RIDEFLOW - LOCATION AUTOCOMPLETE
+   ========================================= */
+
+/* Main location field */
+.booking-location-field {
+  position: relative;
+  z-index: 5;
+  overflow: visible !important;
+}
+
+.booking-location-field:focus-within {
+  z-index: 1000;
+}
+
+/* Input wrapper */
+.location-search-wrap {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  overflow: visible !important;
+}
+
+/* Input styling */
+.location-search-wrap input {
+  width: 100%;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 5px 0;
+  box-sizing: border-box;
+}
+
+.location-search-wrap input::placeholder {
+  color: #777783;
+  opacity: 1;
+}
+
+.location-search-wrap input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Suggestions dropdown */
+.location-suggestions {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: -10px;
+  right: -10px;
+
+  width: auto;
+  max-height: 320px;
+  overflow-y: auto;
+
+  background: #17171e;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+
+  padding: 7px;
+  z-index: 99999;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.55),
+    0 4px 12px rgba(0, 0, 0, 0.25);
+
+  animation: locationDropdownIn 0.16s ease-out;
+}
+
+/* Dropdown scrollbar */
+.location-suggestions::-webkit-scrollbar {
+  width: 5px;
+}
+
+.location-suggestions::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.location-suggestions::-webkit-scrollbar-thumb {
+  background: #494953;
+  border-radius: 10px;
+}
+
+/* Individual suggestion */
+.location-suggestion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  padding: 12px 11px;
+
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+
+  color: #ffffff;
+  text-align: left;
+  font-family: inherit;
+
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.location-suggestion:hover {
+  background: rgba(128, 88, 236, 0.15);
+  transform: translateX(2px);
+}
+
+.location-suggestion:focus-visible {
+  outline: 2px solid #8058ec;
+  outline-offset: -2px;
+}
+
+/* Location icon */
+.location-suggestion-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+
+  border-radius: 9px;
+  background: rgba(128, 88, 236, 0.13);
+  color: #a78bfa;
+}
+
+/* Suggestion text */
+.location-suggestion-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  min-width: 0;
+  flex: 1;
+}
+
+.location-suggestion-text strong {
+  color: #f5f5f7;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.location-suggestion-text small {
+  color: #92929f;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* Loading and empty messages */
+.location-suggestion-message {
+  padding: 18px 12px;
+
+  color: #a5a5b2;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Pickup and dropoff layering */
+.booking-route-fields {
+  position: relative;
+  overflow: visible !important;
+}
+
+.booking-route-fields .booking-location-field.pickup {
+  z-index: 20;
+}
+
+.booking-route-fields .booking-location-field.dropoff {
+  z-index: 10;
+}
+
+.booking-route-fields .booking-location-field:focus-within {
+  z-index: 1000;
+}
+
+/* Dropdown animation */
+@keyframes locationDropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .location-suggestions {
+    left: -5px;
+    right: -5px;
+    max-height: 260px;
+  }
+
+  .location-suggestion {
+    padding: 11px 8px;
+  }
+
+  .location-suggestion-text strong {
+    font-size: 12px;
+  }
+
+  .location-suggestion-text small {
+    font-size: 10px;
+  }
+}
+/* Fix pickup and drop-off text visibility */
+.booking-panel .booking-location-field .location-input-wrap input {
+  color: #17171c !important;
+  -webkit-text-fill-color: #17171c !important;
+  caret-color: #7354e8;
+  font-weight: 600;
+  opacity: 1;
+}
+
+/* Placeholder text */
+.booking-panel .booking-location-field .location-input-wrap input::placeholder {
+  color: #858592 !important;
+  -webkit-text-fill-color: #858592 !important;
+  opacity: 1;
+}
+
+/* Keep text black while typing or selecting */
+.booking-panel .booking-location-field .location-input-wrap input:focus {
+  color: #17171c !important;
+  -webkit-text-fill-color: #17171c !important;
+  outline: none;
+}
+
+
+.booking-location-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.booking-gps-button,
+.booking-map-pick-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 14px;
+  border: 1px solid #e4e2ed;
+  border-radius: 10px;
+  background: #fff;
+  color: #24212d;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.booking-gps-button:hover,
+.booking-map-pick-button:hover {
+  border-color: #8058ec;
+  background: #f7f4ff;
+  color: #7354e8;
+}
+
+.booking-gps-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.booking-map-pick-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.booking-map-pick-button {
+  flex: 1;
+}
+
+.booking-map-pick-button.active {
+  background: #8058ec;
+  border-color: #8058ec;
+  color: #fff;
+}
+
+.map-pick-instruction {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #7354e8;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.map-pick-instruction button {
+  border: none;
+  background: transparent;
+  color: #7354e8;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.map-selection-active {
+  cursor: crosshair !important;
+}
+
+@media (max-width: 600px) {
+  .booking-map-pick-actions {
+    flex-direction: column;
+  }
+}

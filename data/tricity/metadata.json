@@ -1,0 +1,15 @@
+{
+    "project": "RideFlow",
+    "graph_version": "TRICITY_V1",
+    "network_type": "drive",
+    "algorithm": "CUSTOM_JAVA_DIJKSTRA",
+    "nodes": 59505,
+    "directed_edges": 152483,
+    "bbox": {
+        "west": 76.55,
+        "south": 30.55,
+        "east": 76.95,
+        "north": 30.85
+    },
+    "source": "OpenStreetMap"
+}

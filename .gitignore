@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Generated files
+dist/
+build/
+cache/
+*.class
+*.jar
+routing-java/out/
+
+# ZIP archives
+*.zip
+
+# Logs and IDE
+*.log
+.vscode/
+.DS_Store
+Thumbs.db
